@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GOLDREST - Gestão de Mesas</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div class="pagina-mesas">
+
+        <!-- CABEÇALHO -->
+        <header class="cabecalho-mesas">
+
+            <div class="identidade-restaurante">
+                <img
+                    id="logoRestauranteMenu"
+                    src=""
+                    alt="Logótipo do restaurante"
+                    hidden
+                >
+
+                <div>
+                    <h1 id="nomeRestauranteMenu">GOLDREST</h1>
+                    <h2>Gestão de Mesas</h2>
+                    <p>Cadastre e organize as mesas do restaurante.</p>
+                </div>
+            </div>
+
+            <a href="menu.html" class="botao-voltar">
+                Voltar ao Painel
+            </a>
+
+        </header>
+
+        <!-- RESUMO DAS MESAS -->
+        <section class="resumo-mesas">
+
+            <div class="cartao-mesa-resumo">
+                <h3>Total de Mesas</h3>
+                <p id="totalMesas">0</p>
+            </div>
+
+            <div class="cartao-mesa-resumo">
+                <h3>Mesas Livres</h3>
+                <p id="mesasLivres">0</p>
+            </div>
+
+            <div class="cartao-mesa-resumo">
+                <h3>Mesas Ocupadas</h3>
+                <p id="mesasOcupadas">0</p>
+            </div>
+
+        </section>
+
+        <!-- ÁREA DE GESTÃO -->
+        <section class="area-gestao-mesas">
+
+            <!-- FORMULÁRIO -->
+            <div class="formulario-mesas">
+
+                <h2 id="tituloFormularioMesa">
+                    Cadastrar Mesa
+                </h2>
+
+                <form id="formMesa">
+
+                    <input type="hidden" id="idMesa">
+
+                    <div class="campo-mesa">
+                        <label for="numeroMesa">
+                            Número da Mesa
+                        </label>
+
+                        <input
+                            type="number"
+                            id="numeroMesa"
+                            min="1"
+                            placeholder="Ex.: 1"
+                            required
+                        >
+                    </div>
+
+                    <div class="campo-mesa">
+                        <label for="capacidadeMesa">
+                            Capacidade de Pessoas
+                        </label>
+
+                        <input
+                            type="number"
+                            id="capacidadeMesa"
+                            min="1"
+                            placeholder="Ex.: 4"
+                            required
+                        >
+                    </div>
+
+                    <div class="campo-mesa">
+                        <label for="estadoMesa">
+                            Estado da Mesa
+                        </label>
+
+                        <select id="estadoMesa" required>
+                            <option value="Livre">Livre</option>
+                            <option value="Ocupada">Ocupada</option>
+                        </select>
+                    </div>
+
+                    <div class="botoes-mesa">
+
+                        <button type="submit" id="botaoGuardarMesa">
+                            Guardar Mesa
+                        </button>
+
+                        <button
+                            type="button"
+                            id="botaoCancelarMesa"
+                            hidden
+                        >
+                            Cancelar Edição
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+            <!-- LISTA DE MESAS -->
+            <div class="lista-mesas">
+
+                <div class="titulo-lista-mesas">
+
+                    <h2>Mesas Cadastradas</h2>
+
+                    <input
+                        type="search"
+                        id="pesquisaMesa"
+                        placeholder="Pesquisar mesa..."
+                    >
+
+                </div>
+
+                <div class="tabela-responsiva">
+
+                    <table class="tabela-mesas">
+
+                        <thead>
+                            <tr>
+                                <th>Número</th>
+                                <th>Capacidade</th>
+                                <th>Estado</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="listaMesas">
+                            <!-- As mesas aparecem aqui pelo JavaScript -->
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+                <p id="mensagemMesas" class="mensagem-mesas">
+                    Ainda não existem mesas cadastradas.
+                </p>
+
+            </div>
+
+        </section>
+
+        <!-- RODAPÉ -->
+        <footer class="rodape-mesas">
+            <p id="rodapeRestaurante">
+                GOLDREST - Sistema de Gestão de Restaurante
+            </p>
+        </footer>
+
+    </div>
+
+    <script src="js/app.js"></script>
+
+    <!-- CARREGAR IDENTIDADE DO RESTAURANTE -->
+    <script>
+        try {
+            const definicoes = lerObjetoDados("definicoesRestaurante");
+
+            if (definicoes) {
+
+                if (definicoes.nome) {
+                    document.getElementById("nomeRestauranteMenu").textContent =
+                        definicoes.nome;
+
+                    document.title =
+                        definicoes.nome + " - Gestão de Mesas";
+                }
+
+                if (definicoes.logo) {
+                    const logo = document.getElementById("logoRestauranteMenu");
+
+                    logo.src = definicoes.logo;
+                    logo.hidden = false;
+                }
+
+                if (definicoes.nome) {
+                    document.getElementById("rodapeRestaurante").textContent =
+                        definicoes.nome + " - Sistema de Gestão de Restaurante";
+                }
+            }
+        } catch (erro) {
+            console.log("Não foi possível carregar as definições do restaurante.");
+        }
+    </script>
+
+</body>
+</html>

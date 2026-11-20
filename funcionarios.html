@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GOLDREST - Gestão de Funcionários</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="pagina-funcionarios">
+
+    <main class="conteudo-modulo">
+
+        <!-- CABEÇALHO -->
+        <header class="cabecalho-modulo">
+
+            <div class="identidade-restaurante">
+
+                <img
+                    id="logoRestauranteMenu"
+                    src=""
+                    alt="Logótipo do restaurante"
+                    hidden
+                >
+
+                <div>
+                    <h1 id="nomeRestauranteMenu">GOLDREST</h1>
+                    <h2>Gestão de Funcionários</h2>
+                    <p>
+                        Regista e organiza os funcionários do restaurante.
+                    </p>
+                </div>
+
+            </div>
+
+            <a href="menu.html" class="botao-voltar">
+                Voltar ao Painel
+            </a>
+
+        </header>
+
+        <!-- RESUMO -->
+        <section class="estatisticas-stock">
+
+            <div class="cartao-stock">
+                <span>Total de funcionários</span>
+                <h2 id="totalFuncionarios">0</h2>
+            </div>
+
+            <div class="cartao-stock">
+                <span>Funcionários ativos</span>
+                <h2 id="funcionariosAtivos">0</h2>
+            </div>
+
+            <div class="cartao-stock">
+                <span>Funcionários inativos</span>
+                <h2 id="funcionariosInativos">0</h2>
+            </div>
+
+        </section>
+
+        <!-- FORMULÁRIO -->
+        <section class="cartao-modulo-stock">
+
+            <h2 id="tituloFormularioFuncionario">
+                Cadastrar Funcionário
+            </h2>
+
+            <p class="descricao-stock">
+                Preenche os dados para registar um funcionário.
+            </p>
+
+            <form id="formFuncionario">
+
+                <input type="hidden" id="idFuncionario">
+
+                <div class="campos-stock">
+
+                    <div class="campo-stock">
+                        <label for="nomeFuncionario">
+                            Nome completo
+                        </label>
+
+                        <input
+                            type="text"
+                            id="nomeFuncionario"
+                            placeholder="Nome do funcionário"
+                            maxlength="100"
+                            required
+                        >
+                    </div>
+
+                    <div class="campo-stock">
+                        <label for="cargoFuncionario">Cargo</label>
+
+                        <select id="cargoFuncionario" required>
+                            <option value="">Selecionar cargo</option>
+                            <option value="Gerente">Gerente</option>
+                            <option value="Cozinheiro">Cozinheiro</option>
+                            <option value="Auxiliar de cozinha">Auxiliar de cozinha</option>
+                            <option value="Empregado de mesa">Empregado de mesa</option>
+                            <option value="Caixa">Caixa</option>
+                            <option value="Rececionista">Rececionista</option>
+                            <option value="Limpeza">Limpeza</option>
+                            <option value="Outro">Outro</option>
+                        </select>
+                    </div>
+
+                    <div class="campo-stock">
+                        <label for="telefoneFuncionario">Telefone</label>
+
+                        <input
+                            type="tel"
+                            id="telefoneFuncionario"
+                            placeholder="Ex.: 923000000"
+                            maxlength="20"
+                            required
+                        >
+                    </div>
+
+                    <div class="campo-stock">
+                        <label for="emailFuncionario">E-mail</label>
+
+                        <input
+                            type="email"
+                            id="emailFuncionario"
+                            placeholder="funcionario@email.com"
+                            maxlength="100"
+                        >
+                    </div>
+
+                    <div class="campo-stock">
+                        <label for="estadoFuncionario">Estado</label>
+
+                        <select id="estadoFuncionario" required>
+                            <option value="Ativo">Ativo</option>
+                            <option value="Inativo">Inativo</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <button
+                    type="submit"
+                    class="botao-registar-stock"
+                    id="botaoGuardarFuncionario"
+                >
+                    Cadastrar Funcionário
+                </button>
+
+                <button
+                    type="button"
+                    class="botao-cancelar-funcionario"
+                    id="botaoCancelarEdicao"
+                    hidden
+                >
+                    Cancelar Edição
+                </button>
+
+            </form>
+
+        </section>
+
+        <!-- LISTA DE FUNCIONÁRIOS -->
+        <section class="cartao-modulo-stock">
+
+            <div class="titulo-lista-stock">
+
+                <div>
+                    <h2>Funcionários Registados</h2>
+
+                    <p class="descricao-stock">
+                        Consulta, pesquisa e gere os funcionários.
+                    </p>
+                </div>
+
+                <input
+                    type="search"
+                    id="pesquisaFuncionarios"
+                    placeholder="Pesquisar funcionário..."
+                >
+
+            </div>
+
+            <div class="tabela-responsiva">
+
+                <table class="tabela-stock">
+
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Cargo</th>
+                            <th>Telefone</th>
+                            <th>E-mail</th>
+                            <th>Estado</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="listaFuncionarios">
+                        <tr>
+                            <td colspan="6">
+                                Nenhum funcionário registado.
+                            </td>
+                        </tr>
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+        <!-- RODAPÉ -->
+        <footer class="rodape-painel">
+            <p id="rodapeRestaurante">
+                GOLDREST © 2026 - Sistema de Gestão de Restaurante
+            </p>
+        </footer>
+
+    </main>
+
+    <script src="js/app.js"></script>
+
+    <!-- IDENTIDADE DO RESTAURANTE -->
+    <script>
+        try {
+
+            const definicoes = lerObjetoDados("definicoesRestaurante");
+
+            if (definicoes) {
+
+                if (definicoes.nome) {
+
+                    document.getElementById("nomeRestauranteMenu").textContent =
+                        definicoes.nome;
+
+                    document.title =
+                        definicoes.nome + " - Gestão de Funcionários";
+
+                    document.getElementById("rodapeRestaurante").textContent =
+                        definicoes.nome +
+                        " © 2026 - Sistema de Gestão de Restaurante";
+                }
+
+                if (definicoes.logo) {
+
+                    const logo =
+                        document.getElementById("logoRestauranteMenu");
+
+                    logo.src = definicoes.logo;
+                    logo.hidden = false;
+                }
+
+            }
+
+        } catch (erro) {
+
+            console.log(
+                "Não foi possível carregar as definições do restaurante."
+            );
+
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GOLDREST - Cadastro</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="formulario">
+
+            <h1>GOLDREST</h1>
+            <p class="subtitulo">Criação de Conta</p>
+
+            <h2>Cadastrar Utilizador</h2>
+
+            <form id="formCadastro">
+
+                <label for="nome">Nome completo</label>
+                <input type="text" id="nome"
+                       placeholder="Digite o seu nome" required>
+
+                <label for="email">E-mail</label>
+                <input type="email" id="email"
+                       placeholder="Digite o seu e-mail" required>
+
+                <label for="telefone">Telefone</label>
+                <input type="tel" id="telefone"
+                       placeholder="Digite o seu telefone" required>
+
+                <label for="senha">Palavra-passe</label>
+                <input type="password" id="senha"
+                       placeholder="Crie uma palavra-passe"
+                       minlength="6" required>
+
+                <label for="confirmarSenha">Confirmar palavra-passe</label>
+                <input type="password" id="confirmarSenha"
+                       placeholder="Repita a palavra-passe" required>
+
+                <button type="submit">Criar Conta</button>
+
+            </form>
+
+            <p class="alternativa">
+                Já tens uma conta?
+                <a href="index.html">Iniciar sessão</a>
+            </p>
+
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

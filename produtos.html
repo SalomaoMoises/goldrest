@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GOLDREST - Produtos</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="pagina-painel">
+
+    <!-- MENU LATERAL -->
+    <aside class="menu-lateral">
+
+        <div class="logo">
+
+            <img
+                id="logoRestauranteMenu"
+                src=""
+                alt="Logótipo do restaurante"
+                style="display:none; width:65px; height:65px; object-fit:contain; border-radius:50%; margin-bottom:10px;"
+            >
+
+            <h2 id="nomeRestauranteMenu">GOLDREST</h2>
+
+            <p>Gestão de Restaurante</p>
+
+        </div>
+
+        <nav>
+
+            <a href="menu.html">⌂ Início</a>
+            <a href="produtos.html" class="ativo">▣ Produtos</a>
+            <a href="mesas.html">▦ Mesas</a>
+            <a href="pedidos.html">☷ Pedidos</a>
+            <a href="vendas.html">▤ Vendas</a>
+            <a href="stock.html">▣ Stock</a>
+            <a href="funcionarios.html">♙ Funcionários</a>
+            <a href="relatorios.html">▥ Relatórios</a>
+            <a href="definicoes.html">⚙ Definições</a>
+
+        </nav>
+
+        <button class="botao-sair" onclick="terminarSessao()">
+            Terminar Sessão
+        </button>
+
+    </aside>
+
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="conteudo-painel">
+
+
+        <!-- CABEÇALHO -->
+        <header class="cabecalho-painel">
+
+            <div>
+
+                <h1>Gestão de Produtos</h1>
+
+                <p>
+                    Cadastre e organize os produtos do restaurante.
+                </p>
+
+            </div>
+
+            <div class="perfil-utilizador">
+
+                <span class="icone-perfil">♙</span>
+
+                <div>
+
+                    <strong id="nomeUtilizador">Utilizador</strong>
+
+                    <small>Administrador</small>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- CADASTRO DE PRODUTOS -->
+        <section class="area-produtos">
+
+            <div class="cabecalho-secao">
+
+                <div>
+
+                    <h2>Adicionar Produto</h2>
+
+                    <p>Preencha os dados do produto.</p>
+
+                </div>
+
+            </div>
+
+
+            <form id="formProduto" class="form-produto">
+
+                <input type="hidden" id="produtoId">
+
+
+                <div class="campos-produto">
+
+
+                    <div class="campo">
+
+                        <label for="nomeProduto">
+                            Nome do produto
+                        </label>
+
+                        <input
+                            type="text"
+                            id="nomeProduto"
+                            placeholder="Ex.: Hambúrguer"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="campo">
+
+                        <label for="categoriaProduto">
+                            Categoria
+                        </label>
+
+                        <select id="categoriaProduto" required>
+
+                            <option value="">
+                                Selecionar categoria
+                            </option>
+
+                            <option value="Comidas">Comidas</option>
+
+                            <option value="Bebidas">Bebidas</option>
+
+                            <option value="Sobremesas">Sobremesas</option>
+
+                            <option value="Entradas">Entradas</option>
+
+                            <option value="Outros">Outros</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="campo">
+
+                        <label for="precoProduto">
+                            Preço (Kz)
+                        </label>
+
+                        <input
+                            type="number"
+                            id="precoProduto"
+                            placeholder="Ex.: 3500"
+                            min="0.01"
+                            step="0.01"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="campo">
+
+                        <label for="quantidadeProduto">
+                            Quantidade em stock
+                        </label>
+
+                        <input
+                            type="number"
+                            id="quantidadeProduto"
+                            placeholder="Ex.: 20"
+                            min="0"
+                            step="1"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="campo campo-completo">
+
+                        <label for="descricaoProduto">
+                            Descrição
+                        </label>
+
+                        <textarea
+                            id="descricaoProduto"
+                            placeholder="Descreva o produto..."
+                        ></textarea>
+
+                    </div>
+
+
+                    <div class="campo campo-completo">
+
+                        <label for="imagemProduto">
+                            Imagem do produto
+                        </label>
+
+                        <input
+                            type="file"
+                            id="imagemProduto"
+                            accept="image/*"
+                        >
+
+                        <img
+                            id="previsualizacaoImagem"
+                            class="previsualizacao-imagem"
+                            alt="Pré-visualização do produto"
+                            hidden
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- BOTÕES -->
+                <div class="botoes-formulario">
+
+                    <button type="submit" id="botaoGuardar">
+                        Guardar Produto
+                    </button>
+
+                    <button
+                        type="button"
+                        class="botao-cancelar"
+                        id="botaoCancelar"
+                        hidden
+                    >
+                        Cancelar Edição
+                    </button>
+
+                </div>
+
+            </form>
+
+        </section>
+
+
+        <!-- LISTA DE PRODUTOS -->
+        <section class="area-lista-produtos">
+
+            <div class="cabecalho-secao">
+
+                <div>
+
+                    <h2>Produtos Cadastrados</h2>
+
+                    <p id="quantidadeRegistos">
+                        Total: 0 produtos
+                    </p>
+
+                </div>
+
+
+                <input
+                    type="search"
+                    id="pesquisaProduto"
+                    class="pesquisa-produto"
+                    placeholder="Pesquisar produto..."
+                >
+
+            </div>
+
+
+            <!-- TABELA -->
+            <div class="tabela-responsiva">
+
+                <table class="tabela-produtos">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Imagem</th>
+                            <th>Produto</th>
+                            <th>Categoria</th>
+                            <th>Preço</th>
+                            <th>Stock</th>
+                            <th>Ações</th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="listaProdutos">
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+            <p id="mensagemSemProdutos" class="mensagem-vazia">
+
+                Ainda não existem produtos cadastrados.
+
+            </p>
+
+        </section>
+
+
+        <!-- RODAPÉ -->
+        <footer class="rodape-painel">
+
+            <span id="rodapeRestaurante">
+                GOLDREST © 2026 - Sistema de Gestão de Restaurante
+            </span>
+
+        </footer>
+
+    </main>
+
+
+    <!-- JAVASCRIPT PRINCIPAL -->
+    <script src="js/app.js"></script>
+
+
+    <!-- CARREGAR DADOS DAS DEFINIÇÕES -->
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function () {
+
+            let dados = {};
+
+            try {
+
+                dados = lerObjetoDados("definicoesRestaurante");
+
+            } catch (erro) {
+
+                dados = {};
+
+            }
+
+            const nome = dados.nome || "GOLDREST";
+
+            // Atualizar nome do restaurante
+            document.getElementById(
+                "nomeRestauranteMenu"
+            ).textContent = nome;
+
+
+            // Atualizar título da página
+            document.title = nome + " - Produtos";
+
+
+            // Atualizar rodapé
+            document.getElementById(
+                "rodapeRestaurante"
+            ).textContent =
+                nome + " © 2026 - Sistema de Gestão de Restaurante";
+
+
+            // Mostrar logótipo, se existir
+            if (dados.logo) {
+
+                const imagem = document.getElementById(
+                    "logoRestauranteMenu"
+                );
+
+                imagem.src = dados.logo;
+
+                imagem.style.display = "block";
+
+            }
+
+        });
+
+    </script>
+
+</body>
+</html>

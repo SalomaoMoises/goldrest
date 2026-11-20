@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GOLDREST - Definições</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="pagina-definicoes">
+
+    <main class="conteudo-modulo">
+
+        <!-- CABEÇALHO -->
+        <header class="cabecalho-modulo">
+
+            <div class="identidade-restaurante">
+
+                <img
+                    id="logoRestauranteMenu"
+                    src=""
+                    alt="Logótipo do restaurante"
+                    hidden
+                >
+
+                <div>
+                    <h1 id="nomeRestauranteMenu">GOLDREST</h1>
+                    <h2>Definições do Sistema</h2>
+                    <p>
+                        Configura as informações gerais do teu restaurante.
+                    </p>
+                </div>
+
+            </div>
+
+            <a href="menu.html" class="botao-voltar">
+                Voltar ao Painel
+            </a>
+
+        </header>
+
+        <!-- FORMULÁRIO -->
+        <section class="cartao-modulo-stock">
+
+            <h2>Informações do Restaurante</h2>
+
+            <p class="descricao-stock">
+                Preenche os dados que identificam o teu estabelecimento.
+            </p>
+
+            <form id="formDefinicoes">
+
+                <div class="campos-stock">
+
+                    <div class="campo-stock">
+                        <label for="nomeRestaurante">
+                            Nome do Restaurante
+                        </label>
+
+                        <input
+                            type="text"
+                            id="nomeRestaurante"
+                            placeholder="Ex.: GOLDREST"
+                            required
+                        >
+                    </div>
+
+                    <div class="campo-stock">
+                        <label for="categoriaRestaurante">
+                            Categoria
+                        </label>
+
+                        <select id="categoriaRestaurante" required>
+                            <option value="">Seleciona uma categoria</option>
+                            <option value="Tradicional">Tradicional</option>
+                            <option value="Fast Food">Fast Food</option>
+                            <option value="Pizzaria">Pizzaria</option>
+                            <option value="Cafetaria">Cafetaria</option>
+                            <option value="Pastelaria">Pastelaria</option>
+                            <option value="Outro">Outro</option>
+                        </select>
+                    </div>
+
+                    <div class="campo-stock">
+                        <label for="telefoneRestaurante">
+                            Telefone
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="telefoneRestaurante"
+                            placeholder="Ex.: 923 000 000"
+                        >
+                    </div>
+
+                    <div class="campo-stock">
+                        <label for="emailRestaurante">
+                            E-mail
+                        </label>
+
+                        <input
+                            type="email"
+                            id="emailRestaurante"
+                            placeholder="restaurante@email.com"
+                        >
+                    </div>
+
+                    <div class="campo-stock">
+                        <label for="enderecoRestaurante">
+                            Endereço
+                        </label>
+
+                        <input
+                            type="text"
+                            id="enderecoRestaurante"
+                            placeholder="Localização do restaurante"
+                        >
+                    </div>
+
+                    <div class="campo-stock">
+                        <label for="horarioRestaurante">
+                            Horário de Funcionamento
+                        </label>
+
+                        <input
+                            type="text"
+                            id="horarioRestaurante"
+                            placeholder="Ex.: Segunda a Sábado, 08h às 22h"
+                        >
+                    </div>
+
+                    <!-- LOGÓTIPO -->
+                    <div class="campo-stock campo-completo-definicoes">
+
+                        <label for="logoRestaurante">
+                            Logótipo do Restaurante
+                        </label>
+
+                        <input
+                            type="file"
+                            id="logoRestaurante"
+                            accept="image/*"
+                        >
+
+                        <div class="visualizacao-logo">
+
+                            <img
+                                id="imagemLogoRestaurante"
+                                src=""
+                                alt="Pré-visualização do logótipo"
+                            >
+
+                            <p id="mensagemLogo">
+                                Nenhum logótipo selecionado.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <!-- DESCRIÇÃO -->
+                    <div class="campo-stock campo-completo-definicoes">
+
+                        <label for="descricaoRestaurante">
+                            Descrição
+                        </label>
+
+                        <textarea
+                            id="descricaoRestaurante"
+                            rows="4"
+                            placeholder="Escreve uma breve descrição do restaurante..."
+                        ></textarea>
+
+                    </div>
+
+                </div>
+
+                <!-- BOTÕES -->
+                <div class="acoes-definicoes">
+
+                    <button type="submit" class="botao-registar-stock">
+                        Guardar Definições
+                    </button>
+
+                    <button
+                        type="button"
+                        id="botaoLimparDefinicoes"
+                        class="botao-limpar-definicoes"
+                    >
+                        Limpar Formulário
+                    </button>
+
+                </div>
+
+                <p id="mensagemDefinicoes" class="mensagem-definicoes"></p>
+
+            </form>
+
+        </section>
+
+        <!-- RESUMO DAS INFORMAÇÕES -->
+        <section class="cartao-modulo-stock">
+
+            <h2>Resumo das Informações</h2>
+
+            <div class="resumo-definicoes">
+
+                <p>
+                    <strong>Restaurante:</strong>
+                    <span id="resumoNome">Não configurado</span>
+                </p>
+
+                <p>
+                    <strong>Categoria:</strong>
+                    <span id="resumoCategoria">Não configurada</span>
+                </p>
+
+                <p>
+                    <strong>Telefone:</strong>
+                    <span id="resumoTelefone">Não informado</span>
+                </p>
+
+                <p>
+                    <strong>E-mail:</strong>
+                    <span id="resumoEmail">Não informado</span>
+                </p>
+
+                <p>
+                    <strong>Endereço:</strong>
+                    <span id="resumoEndereco">Não informado</span>
+                </p>
+
+                <p>
+                    <strong>Horário:</strong>
+                    <span id="resumoHorario">Não informado</span>
+                </p>
+
+                <p>
+                    <strong>Descrição:</strong>
+                    <span id="resumoDescricao">Não informada</span>
+                </p>
+
+            </div>
+
+        </section>
+
+        <!-- RODAPÉ -->
+        <footer class="rodape-painel">
+
+            <p id="rodapeRestaurante">
+                GOLDREST © 2026 - Sistema de Gestão de Restaurante
+            </p>
+
+        </footer>
+
+    </main>
+
+    <script src="js/app.js"></script>
+
+    <!-- CARREGAR IDENTIDADE DO RESTAURANTE -->
+    <script>
+        try {
+
+            const definicoes = lerObjetoDados("definicoesRestaurante");
+
+            if (definicoes) {
+
+                if (definicoes.nome) {
+
+                    document.getElementById("nomeRestauranteMenu").textContent =
+                        definicoes.nome;
+
+                    document.title =
+                        definicoes.nome + " - Definições";
+
+                    document.getElementById("rodapeRestaurante").textContent =
+                        definicoes.nome +
+                        " © 2026 - Sistema de Gestão de Restaurante";
+                }
+
+                if (definicoes.logo) {
+
+                    const logo =
+                        document.getElementById("logoRestauranteMenu");
+
+                    logo.src = definicoes.logo;
+                    logo.hidden = false;
+                }
+
+            }
+
+        } catch (erro) {
+
+            console.log(
+                "Não foi possível carregar as definições do restaurante."
+            );
+
+        }
+    </script>
+
+</body>
+</html>

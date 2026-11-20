@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GOLDREST - Gestão de Pedidos</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div class="pagina-pedidos">
+
+        <!-- CABEÇALHO -->
+        <header class="cabecalho-pedidos">
+
+            <div class="identidade-restaurante">
+
+                <img
+                    id="logoRestauranteMenu"
+                    src=""
+                    alt="Logótipo do restaurante"
+                    hidden
+                >
+
+                <div>
+                    <h1 id="nomeRestauranteMenu">GOLDREST</h1>
+                    <h2>Gestão de Pedidos</h2>
+                    <p>Registe e acompanhe os pedidos dos clientes.</p>
+                </div>
+
+            </div>
+
+            <a href="menu.html" class="botao-voltar-pedidos">
+                Voltar ao Painel
+            </a>
+
+        </header>
+
+        <!-- FORMULÁRIO DO PEDIDO -->
+        <section class="area-novo-pedido">
+
+            <h2>Registar Novo Pedido</h2>
+
+            <div class="dados-pedido">
+
+                <div class="campo-pedido">
+
+                    <label for="clientePedido">
+                        Nome do Cliente
+                    </label>
+
+                    <input
+                        type="text"
+                        id="clientePedido"
+                        placeholder="Nome completo do cliente"
+                        maxlength="80"
+                        required
+                    >
+
+                </div>
+
+                <div class="campo-pedido">
+
+                    <label for="mesaPedido">
+                        Selecionar Mesa
+                    </label>
+
+                    <select id="mesaPedido" required>
+                        <option value="">
+                            Escolha uma mesa livre
+                        </option>
+                    </select>
+
+                </div>
+
+                <div class="campo-pedido">
+
+                    <label for="produtoPedido">
+                        Selecionar Produto
+                    </label>
+
+                    <select id="produtoPedido">
+                        <option value="">
+                            Escolha um produto
+                        </option>
+                    </select>
+
+                </div>
+
+                <div class="campo-pedido">
+
+                    <label for="quantidadePedido">
+                        Quantidade
+                    </label>
+
+                    <input
+                        type="number"
+                        id="quantidadePedido"
+                        min="1"
+                        value="1"
+                    >
+
+                </div>
+
+                <button type="button" id="botaoAdicionarItem">
+                    Adicionar Produto
+                </button>
+
+            </div>
+
+            <!-- PRODUTOS ADICIONADOS -->
+            <h3>Produtos do Pedido</h3>
+
+            <div class="tabela-responsiva">
+
+                <table class="tabela-pedidos">
+
+                    <thead>
+                        <tr>
+                            <th>Produto</th>
+                            <th>Preço</th>
+                            <th>Quantidade</th>
+                            <th>Subtotal</th>
+                            <th>Ação</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="itensPedido">
+                        <!-- Produtos adicionados aparecem aqui -->
+                    </tbody>
+
+                </table>
+
+            </div>
+
+            <!-- TOTAL -->
+            <div class="total-pedido">
+
+                <span>Total do Pedido:</span>
+
+                <strong id="valorTotalPedido">
+                    0,00 Kz
+                </strong>
+
+            </div>
+
+            <button type="button" id="botaoGuardarPedido">
+                Guardar Pedido
+            </button>
+
+            <p id="mensagemNovoPedido" class="mensagem-pedido"></p>
+
+        </section>
+
+        <!-- LISTA DE PEDIDOS -->
+        <section class="area-lista-pedidos">
+
+            <h2>Pedidos Registados</h2>
+
+            <div class="tabela-responsiva">
+
+                <table class="tabela-pedidos">
+
+                    <thead>
+                        <tr>
+                            <th>N.º Pedido</th>
+                            <th>Cliente</th>
+                            <th>Mesa</th>
+                            <th>Produtos</th>
+                            <th>Total</th>
+                            <th>Estado</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="listaPedidos">
+                        <!-- Pedidos aparecem aqui -->
+                    </tbody>
+
+                </table>
+
+            </div>
+
+            <p id="mensagemListaPedidos" class="mensagem-pedido">
+                Ainda não existem pedidos registados.
+            </p>
+
+        </section>
+
+        <!-- RODAPÉ -->
+        <footer class="rodape-pedidos">
+            <p id="rodapeRestaurante">
+                GOLDREST - Sistema de Gestão de Restaurante
+            </p>
+        </footer>
+
+    </div>
+
+    <script src="js/app.js"></script>
+
+    <!-- IDENTIDADE DO RESTAURANTE -->
+    <script>
+        try {
+
+            const definicoes = lerObjetoDados("definicoesRestaurante");
+
+            if (definicoes) {
+
+                if (definicoes.nome) {
+
+                    document.getElementById("nomeRestauranteMenu").textContent =
+                        definicoes.nome;
+
+                    document.title =
+                        definicoes.nome + " - Gestão de Pedidos";
+
+                    document.getElementById("rodapeRestaurante").textContent =
+                        definicoes.nome +
+                        " - Sistema de Gestão de Restaurante";
+                }
+
+                if (definicoes.logo) {
+
+                    const logo =
+                        document.getElementById("logoRestauranteMenu");
+
+                    logo.src = definicoes.logo;
+                    logo.hidden = false;
+                }
+
+            }
+
+        } catch (erro) {
+
+            console.log(
+                "Não foi possível carregar as definições do restaurante."
+            );
+
+        }
+    </script>
+
+</body>
+</html>

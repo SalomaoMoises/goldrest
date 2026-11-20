@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GOLDREST - Relatórios</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="pagina-relatorios">
+
+    <main class="conteudo-modulo">
+
+        <!-- CABEÇALHO -->
+        <header class="cabecalho-modulo">
+
+            <div class="identidade-restaurante">
+
+                <img
+                    id="logoRestauranteMenu"
+                    src=""
+                    alt="Logótipo do restaurante"
+                    hidden
+                >
+
+                <div>
+                    <h1 id="nomeRestauranteMenu">GOLDREST</h1>
+                    <h2>Relatórios</h2>
+                    <p>
+                        Acompanha os resultados e o desempenho do restaurante.
+                    </p>
+                </div>
+
+            </div>
+
+            <a href="menu.html" class="botao-voltar">
+                Voltar ao Painel
+            </a>
+
+        </header>
+
+        <!-- RESUMO GERAL -->
+        <section class="estatisticas-relatorios">
+
+            <div class="cartao-relatorio">
+                <span>Total de vendas</span>
+                <h2 id="relatorioTotalVendas">0</h2>
+                <small>Vendas concluídas</small>
+            </div>
+
+            <div class="cartao-relatorio">
+                <span>Receita total</span>
+                <h2 id="relatorioReceita">0 Kz</h2>
+                <small>Valor arrecadado</small>
+            </div>
+
+            <div class="cartao-relatorio">
+                <span>Pedidos concluídos</span>
+                <h2 id="relatorioConcluidos">0</h2>
+                <small>Pedidos finalizados</small>
+            </div>
+
+            <div class="cartao-relatorio">
+                <span>Pedidos cancelados</span>
+                <h2 id="relatorioCancelados">0</h2>
+                <small>Pedidos cancelados</small>
+            </div>
+
+        </section>
+
+        <!-- PRODUTOS MAIS VENDIDOS -->
+        <section class="cartao-modulo-stock">
+
+            <h2>Produtos Mais Vendidos</h2>
+
+            <p class="descricao-stock">
+                Consulta os produtos com maior quantidade vendida.
+            </p>
+
+            <div class="tabela-responsiva">
+
+                <table class="tabela-stock">
+
+                    <thead>
+                        <tr>
+                            <th>Posição</th>
+                            <th>Produto</th>
+                            <th>Quantidade vendida</th>
+                            <th>Valor arrecadado</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="listaProdutosVendidos">
+                        <tr>
+                            <td colspan="4">
+                                Ainda não existem vendas registadas.
+                            </td>
+                        </tr>
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+        <!-- HISTÓRICO DE VENDAS -->
+        <section class="cartao-modulo-stock">
+
+            <h2>Histórico de Vendas</h2>
+
+            <p class="descricao-stock">
+                Consulta os pedidos que foram concluídos e transformados em vendas.
+            </p>
+
+            <div class="tabela-responsiva">
+
+                <table class="tabela-stock">
+
+                    <thead>
+                        <tr>
+                            <th>N.º Venda</th>
+                            <th>N.º Pedido</th>
+                            <th>Mesa</th>
+                            <th>Total</th>
+                            <th>Data</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="historicoRelatorio">
+                        <tr>
+                            <td colspan="5">
+                                Ainda não existem vendas registadas.
+                            </td>
+                        </tr>
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+        <!-- RODAPÉ -->
+        <footer class="rodape-painel">
+
+            <p id="rodapeRestaurante">
+                GOLDREST © 2026 - Sistema de Gestão de Restaurante
+            </p>
+
+        </footer>
+
+    </main>
+
+    <script src="js/app.js"></script>
+
+    <!-- IDENTIDADE DO RESTAURANTE -->
+    <script>
+        try {
+
+            const definicoes = lerObjetoDados("definicoesRestaurante");
+
+            if (definicoes) {
+
+                if (definicoes.nome) {
+
+                    document.getElementById("nomeRestauranteMenu").textContent =
+                        definicoes.nome;
+
+                    document.title =
+                        definicoes.nome + " - Relatórios";
+
+                    document.getElementById("rodapeRestaurante").textContent =
+                        definicoes.nome +
+                        " © 2026 - Sistema de Gestão de Restaurante";
+                }
+
+                if (definicoes.logo) {
+
+                    const logo =
+                        document.getElementById("logoRestauranteMenu");
+
+                    logo.src = definicoes.logo;
+                    logo.hidden = false;
+                }
+
+            }
+
+        } catch (erro) {
+
+            console.log(
+                "Não foi possível carregar as definições do restaurante."
+            );
+
+        }
+    </script>
+
+</body>
+</html>

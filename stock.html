@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GOLDREST - Gestão de Stock</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="pagina-stock">
+
+    <main class="conteudo-modulo">
+
+        <!-- CABEÇALHO -->
+        <header class="cabecalho-modulo">
+
+            <div class="identidade-restaurante">
+
+                <img
+                    id="logoRestauranteMenu"
+                    src=""
+                    alt="Logótipo do restaurante"
+                    hidden
+                >
+
+                <div>
+                    <h1 id="nomeRestauranteMenu">GOLDREST</h1>
+                    <h2>Gestão de Stock</h2>
+                    <p>
+                        Controla as quantidades dos produtos do restaurante.
+                    </p>
+                </div>
+
+            </div>
+
+            <a href="menu.html" class="botao-voltar">
+                Voltar ao Painel
+            </a>
+
+        </header>
+
+        <!-- RESUMO DO STOCK -->
+        <section class="estatisticas-stock">
+
+            <div class="cartao-stock">
+                <span>Produtos registados</span>
+                <h2 id="quantidadeProdutosStock">0</h2>
+            </div>
+
+            <div class="cartao-stock">
+                <span>Total de unidades</span>
+                <h2 id="totalUnidadesStock">0</h2>
+            </div>
+
+            <div class="cartao-stock">
+                <span>Stock baixo</span>
+                <h2 id="produtosStockBaixo">0</h2>
+            </div>
+
+            <div class="cartao-stock">
+                <span>Sem stock</span>
+                <h2 id="produtosSemStock">0</h2>
+            </div>
+
+        </section>
+
+        <!-- REGISTAR ENTRADA -->
+        <section class="cartao-modulo-stock">
+
+            <h2>Registar Entrada de Stock</h2>
+
+            <p class="descricao-stock">
+                Seleciona um produto e informa a quantidade que entrou no restaurante.
+            </p>
+
+            <form id="formEntradaStock">
+
+                <div class="campos-stock">
+
+                    <div class="campo-stock">
+                        <label for="produtoStock">Produto</label>
+
+                        <select id="produtoStock" required>
+                            <option value="">Selecionar produto</option>
+                        </select>
+                    </div>
+
+                    <div class="campo-stock">
+                        <label for="quantidadeEntrada">
+                            Quantidade a adicionar
+                        </label>
+
+                        <input
+                            type="number"
+                            id="quantidadeEntrada"
+                            min="1"
+                            step="1"
+                            placeholder="Ex.: 20"
+                            required
+                        >
+                    </div>
+
+                    <div class="campo-stock">
+                        <label for="motivoEntrada">
+                            Motivo da entrada
+                        </label>
+
+                        <input
+                            type="text"
+                            id="motivoEntrada"
+                            placeholder="Ex.: Nova compra"
+                            maxlength="100"
+                        >
+                    </div>
+
+                </div>
+
+                <button type="submit" class="botao-registar-stock">
+                    Registar Entrada
+                </button>
+
+            </form>
+
+        </section>
+
+        <!-- STOCK ATUAL -->
+        <section class="cartao-modulo-stock">
+
+            <div class="titulo-lista-stock">
+
+                <div>
+                    <h2>Stock Atual</h2>
+
+                    <p class="descricao-stock">
+                        Consulta a quantidade disponível de cada produto.
+                    </p>
+                </div>
+
+                <input
+                    type="search"
+                    id="pesquisaStock"
+                    placeholder="Pesquisar produto..."
+                >
+
+            </div>
+
+            <div class="tabela-responsiva">
+
+                <table class="tabela-stock">
+
+                    <thead>
+                        <tr>
+                            <th>Produto</th>
+                            <th>Categoria</th>
+                            <th>Quantidade</th>
+                            <th>Estado</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="listaStock">
+                        <tr>
+                            <td colspan="4">
+                                Nenhum produto registado.
+                            </td>
+                        </tr>
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+        <!-- HISTÓRICO DE ENTRADAS -->
+        <section class="cartao-modulo-stock">
+
+            <h2>Histórico de Entradas</h2>
+
+            <p class="descricao-stock">
+                Consulta as entradas de stock registadas.
+            </p>
+
+            <div class="tabela-responsiva">
+
+                <table class="tabela-stock">
+
+                    <thead>
+                        <tr>
+                            <th>Produto</th>
+                            <th>Quantidade</th>
+                            <th>Motivo</th>
+                            <th>Data</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="historicoStock">
+                        <tr>
+                            <td colspan="4">
+                                Ainda não existem entradas registadas.
+                            </td>
+                        </tr>
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+        <!-- RODAPÉ -->
+        <footer class="rodape-painel">
+            <p id="rodapeRestaurante">
+                GOLDREST © 2026 - Sistema de Gestão de Restaurante
+            </p>
+        </footer>
+
+    </main>
+
+    <script src="js/app.js"></script>
+
+    <!-- CARREGAR IDENTIDADE DO RESTAURANTE -->
+    <script>
+        try {
+
+            const definicoes = lerObjetoDados("definicoesRestaurante");
+
+            if (definicoes) {
+
+                if (definicoes.nome) {
+
+                    document.getElementById("nomeRestauranteMenu").textContent =
+                        definicoes.nome;
+
+                    document.title =
+                        definicoes.nome + " - Gestão de Stock";
+
+                    document.getElementById("rodapeRestaurante").textContent =
+                        definicoes.nome +
+                        " © 2026 - Sistema de Gestão de Restaurante";
+                }
+
+                if (definicoes.logo) {
+
+                    const logo =
+                        document.getElementById("logoRestauranteMenu");
+
+                    logo.src = definicoes.logo;
+                    logo.hidden = false;
+                }
+
+            }
+
+        } catch (erro) {
+
+            console.log(
+                "Não foi possível carregar as definições do restaurante."
+            );
+
+        }
+    </script>
+
+</body>
+</html>
